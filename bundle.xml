@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adapt_framework>
+	<bundle>
+		<label>Adapt Captcha</label>
+		<name>adapt_captcha</name>
+		<version>1.0.0</version>
+		<version_status>release</version_status>
+		<availability>public</availability>
+		<type>extension</type>
+		<namespace>\adapt\captcha</namespace>
+		<description>Adapt captcha verification</description>
+		<copyright>2017 Adapt</copyright>
+		<license>MIT</license>
+		<vendor>
+			<name>Adapt Framework</name>
+			<website>https://www.adaptframework.com</website>
+		</vendor>
+		<authors>
+			<author>
+				<name>Tom Davies</name>
+				<email>tom@c10ud.com</email>
+			</author>
+		</authors>
+		<contributors>
+			<contributor>
+				<name>Matt Bruton</name>
+				<email>matt.bruton@gmail.com</email>
+			</contributor>
+		</contributors>
+		<depends_on>
+			<bundle>
+				<name>adapt</name>
+				<version>2</version>
+			</bundle>
+			<bundle>
+				<name>sessions</name>
+				<version>1</version>
+			</bundle>
+		</depends_on>
+		<settings>
+			<catagory name="Captcha">
+				<setting>
+					<name>captcha_length</name>
+					<default_value>5</default_value>
+				</setting>
+				<setting>
+					<name>captcha_include_letters</name>
+					<default_value>Yes</default_value>
+					<allowed_values>
+						<value>Yes</value>
+						<value>No</value>
+					</allowed_values>
+				</setting>
+				<setting>
+					<name>captcha_include_numbers</name>
+					<default_value>Yes</default_value>
+					<allowed_values>
+						<value>Yes</value>
+						<value>No</value>
+					</allowed_values>
+				</setting>
+			</catagory>
+		</settings>
+		<schema>
+			<add>
+				<table name="captcha">
+					<field name="captcha_id" data-type="bigint" key="Primary" auto-increment="Yes" label="Captcha #" />
+					<field name="guid" data-type="guid" label="GUID" />
+					<field name="value" data-type="varchar" max-length="10" label="Value" />
+					<field name="ip_address" data-type="ip4" label="IP Address" />
+					<field name="used" data-type="enum('Yes','No')" default-value="No" label="Used" />
+					<field name="file_key" data-type="varchar" max-length="1024" label="File Key" />
+					<field name="action" data-type="varchar" max-length="256" label="Action Endpoint" />
+				</table>
+				<table name="form_field_type">
+					<record>
+						<name>Captcha</name>
+						<view>\adapt\captcha\view_field_captcha</view>
+					</record>
+				</table>
+			</add>
+		</schema>
+	</bundle>
+</adapt_framework>
