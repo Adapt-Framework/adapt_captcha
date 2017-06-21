@@ -15,7 +15,7 @@ namespace adapt\captcha{
             $this->add_class('form-group field input text captcha-field');
         
             /* Create the control */
-            $control = new html_input(array('type' => 'text', 'name' => $form_data['name'], 'class' => 'form-control'));
+            $control = new html_input(array('type' => 'text', 'name' => $form_data['field_name'], 'class' => 'form-control'));
             $control->set_id();
             
             /* Add the label */
